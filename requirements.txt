@@ -1,6 +1,5 @@
 streamlit
 pandas
 openpyxl
-io
 google-api-python-client
 os
