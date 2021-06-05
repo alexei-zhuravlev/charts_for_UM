@@ -20,25 +20,25 @@ import os
 # Доступ к Google Drive
 ######################
 # необходимые формальности
-SCOPES = ['https://www.googleapis.com/auth/drive']
-SERVICE_ACCOUNT_FILE = 'charts-for-um-e7580d8049ff.json'
-credentials = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-service = build('drive', 'v3', credentials=credentials)
-results = service.files().list(pageSize=10,
-                               fields="nextPageToken, files(id, name, mimeType)").execute()
-# получаем id файла
-fileid = results['files'][0]['id']
-# получаем собственно файл
-file_id = fileid
-request = service.files().get_media(fileId=file_id)
-filename = 'charts.xlsx'
-fh = io.FileIO(filename, 'wb')
-downloader = MediaIoBaseDownload(fh, request)
-done = False
-while done is False:
-    status, done = downloader.next_chunk()
-    # print ("Download %d%%." % int(status.progress() * 100))
+# SCOPES = ['https://www.googleapis.com/auth/drive']
+# SERVICE_ACCOUNT_FILE = 'charts-for-um-e7580d8049ff.json'
+# credentials = service_account.Credentials.from_service_account_file(
+#         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+# service = build('drive', 'v3', credentials=credentials)
+# results = service.files().list(pageSize=10,
+#                                fields="nextPageToken, files(id, name, mimeType)").execute()
+# # получаем id файла
+# fileid = results['files'][0]['id']
+# # получаем собственно файл
+# file_id = fileid
+# request = service.files().get_media(fileId=file_id)
+# filename = 'charts.xlsx'
+# fh = io.FileIO(filename, 'wb')
+# downloader = MediaIoBaseDownload(fh, request)
+# done = False
+# while done is False:
+#     status, done = downloader.next_chunk()
+#     # print ("Download %d%%." % int(status.progress() * 100))
 
 ######################
 # Download data
