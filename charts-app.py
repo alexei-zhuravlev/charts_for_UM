@@ -110,7 +110,7 @@ for sheet in sheets:
                     st.write(f'{item[0]} был на {item[1]} месте')
 
 wb.close()
-os.remove('charts.xlsx')
+# os.remove('charts.xlsx')
 st.write("""
 ***
 """)
